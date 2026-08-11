@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:MyDownloadManager.ViewModels"
+        x:Class="MyDownloadManager.Views.MainWindow"
+        mc:Ignorable="d"
+        Width="900" Height="600"
+        Title="MyDownloadManager">
+  <Design.DataContext>
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+
+  <Grid RowDefinitions="Auto, *" ColumnDefinitions="*">
+    <StackPanel Orientation="Horizontal" Margin="8" Spacing="8">
+      <Button Content="Add" Command="{Binding AddCommand}" />
+      <Button Content="Pause" Command="{Binding PauseCommand}" />
+      <Button Content="Resume" Command="{Binding ResumeCommand}" />
+    </StackPanel>
+
+    <DataGrid Grid.Row="1" Items="{Binding Downloads}" Margin="8">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Name" Binding="{Binding FileName}" />
+        <DataGridTextColumn Header="Progress" Binding="{Binding ProgressText}" />
+        <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+      </DataGrid.Columns>
+    </DataGrid>
+  </Grid>
+</Window>
